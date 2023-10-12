@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-// import 'package:gojek_duplicates/pages/chatting_page.dart';
-// import 'package:gojek_duplicates/pages/home_page.dart';
-import 'package:gojek_duplicates/pages/main_page.dart';
+import 'package:gojek_duplicates/data/services/navigator_service.dart';
+import 'package:gojek_duplicates/router/app_router.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,6 +11,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: MainPage());
+    return MaterialApp.router(
+        routerConfig: AppRouter.router, key: NavigatorService.navigatorKey);
   }
 }

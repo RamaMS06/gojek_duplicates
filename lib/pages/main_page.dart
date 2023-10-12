@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gojek_duplicates/blocs/bottom_navigation/bottom_navigation_bloc.dart';
+import 'package:gojek_duplicates/pages/home_page.dart';
 import 'package:gojek_duplicates/utils/colors.dart';
 import 'package:gojek_duplicates/widgets/menu_item.dart';
 
@@ -24,7 +25,7 @@ class MainPage extends StatelessWidget {
                   controller:
                       context.read<BottomNavigationBloc>().pageController,
                   children: [
-                    Container(color: Colors.red),
+                    const HomePage(),
                     Container(color: Colors.black),
                     Container(color: Colors.blue),
                     Container(color: Colors.orange)
@@ -57,7 +58,7 @@ class MainPage extends StatelessWidget {
                       BlocBuilder<BottomNavigationBloc, BottomNavigationState>(
                         builder: (context, state) {
                           return AnimatedPositioned(
-                            duration: const Duration(milliseconds: 150),
+                            duration: const Duration(milliseconds: 250),
                             curve: Curves.easeInOut,
                             left: MediaQuery.of(context).size.width *
                                 (state.position ?? 0),

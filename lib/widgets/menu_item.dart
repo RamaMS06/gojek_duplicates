@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:gojek_duplicates/data/models/item_favorite_model.dart';
+import 'package:gojek_duplicates/data/models/item_submenu_amount_model.dart';
 import 'package:gojek_duplicates/utils/colors.dart';
 
 class MenuItemNavigation extends StatefulWidget {
@@ -79,6 +81,45 @@ class _MenuItemNavigationState extends State<MenuItemNavigation>
           ),
         ),
       ),
+    );
+  }
+}
+
+class SubMenuItemAmount extends StatelessWidget {
+  final ItemSubMenuAmountModel? item;
+  const SubMenuItemAmount({this.item, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 65,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Image.asset('assets/icons/${item?.image}.png', height: 24, width: 24),
+          const SizedBox(height: 8),
+          Text(item?.label ?? '',
+              style: const TextStyle(
+                  color: Colors.white, fontWeight: FontWeight.bold))
+        ],
+      ),
+    );
+  }
+}
+
+class FavoriteMenu extends StatelessWidget {
+  final ItemFavoriteModel? item;
+  const FavoriteMenu({this.item, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Image.asset('assets/icons/menus/${item?.icon ?? 'ic-gocar'}.png',
+            height: 40, width: 40),
+        const SizedBox(height: 8),
+        Text(item?.label ?? '')
+      ],
     );
   }
 }

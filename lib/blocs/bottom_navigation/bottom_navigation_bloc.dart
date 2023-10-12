@@ -48,20 +48,17 @@ class BottomNavigationBloc
       }
 
       state.changedSelected(event.index);
-      pageController.animateToPage(event.index,
-          duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
+      pageController.jumpToPage(event.index);
     });
   }
 
   @override
   void onEvent(BottomNavigationEvent event) {
-    print(event);
     super.onEvent(event);
   }
 
   @override
   void onChange(Change<BottomNavigationState> change) {
-    print(change);
     super.onChange(change);
   }
 }
