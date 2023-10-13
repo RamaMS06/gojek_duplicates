@@ -44,7 +44,7 @@ class LoginPage extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Enter yout phone number',
+                  Text('Enter your phone number',
                       style: CustomTextStyle.bold().copyWith(fontSize: 20)),
                   const SizedBox(height: 16),
                   const Text(
