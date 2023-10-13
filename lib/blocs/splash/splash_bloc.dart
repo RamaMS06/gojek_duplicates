@@ -16,7 +16,7 @@ class SplashBloc extends Bloc<SplashEvent, SplashState> {
     });
 
     on<GoNextPage>((event, emit) {
-      context.go(Routes.mainPage);
+      context.go(Routes.landingPage);
     });
   }
 }

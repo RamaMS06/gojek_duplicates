@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gojek_duplicates/data/models/item_gopaylater_model.dart';
+import 'package:gojek_duplicates/data/models/item_onboarding_model.dart';
 import 'package:gojek_duplicates/utils/colors.dart';
 import 'package:gojek_duplicates/utils/string.dart';
 import 'package:gojek_duplicates/utils/text_style.dart';
@@ -156,5 +157,38 @@ class GoPayLaterCards extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class OnBoardingCard extends StatelessWidget {
+  final ItemOnBoardingModel? item;
+  const OnBoardingCard({this.item, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 25),
+        child: ClipRRect(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            borderRadius: BorderRadius.circular(40),
+            child: Image.asset(
+              'assets/images/img-${item?.image ?? 'onboarding1'}.jpeg',
+              fit: BoxFit.cover,
+              height: 200,
+            )),
+      ),
+      const SizedBox(height: 40),
+      Text(item?.title ?? 'Welcome to Gojek!',
+          style: const TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 24)),
+      const SizedBox(height: 16),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12),
+        child: Text(item?.desc ?? '-',
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w300)),
+      )
+    ]);
   }
 }
