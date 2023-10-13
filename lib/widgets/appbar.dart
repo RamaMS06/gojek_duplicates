@@ -46,3 +46,46 @@ class SearchAppBarWithProfile extends StatelessWidget {
     ]);
   }
 }
+
+class AppBarTemplate extends StatelessWidget implements PreferredSizeWidget {
+  final Widget? leading, trailing;
+  const AppBarTemplate({this.leading, this.trailing, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      backgroundColor: Colors.white,
+      elevation: 0,
+      title: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+        leading ??
+            Image.asset('assets/icons/ic-gojek2.png', width: 100, height: 25),
+        trailing ??
+            Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  border: Border.all(
+                      color: Colors.black.withOpacity(0.2), width: 1)),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                child: Row(
+                  children: [
+                    Icon(Icons.translate, size: 16, color: Colors.black),
+                    SizedBox(width: 4),
+                    Text('English',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w300,
+                            fontSize: 12,
+                            color: Colors.black))
+                  ],
+                ),
+              ),
+            )
+      ]),
+    );
+  }
+
+  @override
+  // TODO: implement preferredSize
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
+}

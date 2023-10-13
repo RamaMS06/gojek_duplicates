@@ -9,12 +9,14 @@ sealed class OnboardingEvent extends Equatable {
 
 class FetchDataOnBoard extends OnboardingEvent {}
 
-class OnBoardinChanged extends OnboardingEvent {
+class OnBoardingChanged extends OnboardingEvent {
   final int? index;
 
-  const OnBoardinChanged({this.index});
+  const OnBoardingChanged({this.index});
 
   @override
   // TODO: implement props
   List<Object> get props => [index ?? 0];
 }
+
+class GoToLoginPage extends OnboardingEvent{}

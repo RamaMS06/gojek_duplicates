@@ -26,15 +26,11 @@ class MainPage extends StatelessWidget {
                       context.read<BottomNavigationBloc>().pageController,
                   children: [
                     const HomePage(),
-                    Container(color: Colors.black),
-                    Container(color: Colors.blue),
-                    Container(color: Colors.orange)
+                    Container(color: Colors.white),
+                    Container(color: Colors.white),
+                    Container(color: Colors.white)
                   ],
-                  onPageChanged: (val) {
-                    // context
-                    //     .read<BottomNavigationBloc>()
-                    //     .add(BottomNavigationOnChange(val));
-                  },
+                  onPageChanged: (val) {},
                 );
               },
             )),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gojek_duplicates/blocs/onboarding/onboarding_bloc.dart';
 import 'package:gojek_duplicates/utils/colors.dart';
+import 'package:gojek_duplicates/widgets/appbar.dart';
 import 'package:gojek_duplicates/widgets/buttons.dart';
 import 'package:gojek_duplicates/widgets/cards.dart';
 
@@ -11,44 +12,15 @@ class LandingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => OnboardingBloc()..add(FetchDataOnBoard()),
+      create: (context) => OnboardingBloc(context)..add(FetchDataOnBoard()),
       child: Scaffold(
+        backgroundColor: Colors.white,
+        appBar: const AppBarTemplate(),
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 16),
             child: Stack(
               children: [
-                Positioned(
-                    top: 0,
-                    left: 16,
-                    right: 16,
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Image.asset('assets/icons/ic-gojek2.png',
-                              width: 100, height: 25),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(30),
-                                border: Border.all(
-                                    color: Colors.black.withOpacity(0.2),
-                                    width: 1)),
-                            child: const Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 12, vertical: 10),
-                              child: Row(
-                                children: [
-                                  Icon(Icons.translate, size: 16),
-                                  SizedBox(width: 4),
-                                  Text('English',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w300,
-                                          fontSize: 12))
-                                ],
-                              ),
-                            ),
-                          )
-                        ])),
                 Positioned(
                     bottom: 10,
                     left: 0,
@@ -63,7 +35,7 @@ class LandingPage extends StatelessWidget {
                                   onPageChanged: (val) {
                                     context
                                         .read<OnboardingBloc>()
-                                        .add(OnBoardinChanged(index: val));
+                                        .add(OnBoardingChanged(index: val));
                                   },
                                   children: List.generate(
                                       state.listData?.length ?? 0,
@@ -101,7 +73,11 @@ class LandingPage extends StatelessWidget {
                                       label: 'Log in',
                                       type: ButtonTemplateType.primary,
                                       width: MediaQuery.of(context).size.width,
-                                      onPressed: () {}),
+                                      onPressed: () {
+                                        context
+                                            .read<OnboardingBloc>()
+                                            .add(GoToLoginPage());
+                                      }),
                                   const SizedBox(height: 16),
                                   ButtonTemplate(
                                       label: 'I\'m new, sign me up',

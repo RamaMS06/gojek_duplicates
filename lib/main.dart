@@ -3,6 +3,7 @@ import 'package:gojek_duplicates/data/services/navigator_service.dart';
 import 'package:gojek_duplicates/router/app_router.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MainApp());
 }
 

@@ -1,12 +1,15 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:gojek_duplicates/data/models/item_onboarding_model.dart';
+import 'package:gojek_duplicates/router/routes.dart';
 
 part 'onboarding_event.dart';
 part 'onboarding_state.dart';
 
 class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
-  OnboardingBloc() : super(OnboardingLoaded()) {
+  OnboardingBloc(BuildContext context) : super(OnboardingLoaded()) {
     on<FetchDataOnBoard>((event, emit) {
       emit(OnboardingState(listData: [
         ItemOnBoardingModel(
@@ -30,8 +33,12 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       ]));
     });
 
-    on<OnBoardinChanged>((event, emit) {
+    on<OnBoardingChanged>((event, emit) {
       emit(OnboardingState(listData: state.listData, index: event.index));
+    });
+
+    on<GoToLoginPage>((event, emit) {
+      context.push(Routes.loginPage);
     });
   }
 }

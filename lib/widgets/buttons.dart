@@ -9,6 +9,7 @@ class ButtonTemplate extends StatelessWidget {
   final String label;
   final ButtonTemplateType type;
   final double? width;
+  final bool? isLoading;
   final Function() onPressed;
 
   late Color textColor;
@@ -20,6 +21,7 @@ class ButtonTemplate extends StatelessWidget {
       {required this.label,
       required this.type,
       this.width,
+      this.isLoading,
       required this.onPressed,
       super.key});
 
@@ -44,11 +46,17 @@ class ButtonTemplate extends StatelessWidget {
       child: FilledButton(
           style: ButtonStyle(side: side, backgroundColor: backgroundColor),
           onPressed: onPressed,
-          child: Text(label,
-              style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  color: textColor,
-                  fontSize: 15))),
+          child: isLoading ?? false
+              ? const SizedBox(
+                  height: 20,
+                  width: 20,
+                  child: CircularProgressIndicator(
+                      color: Colors.white, strokeWidth: 3))
+              : Text(label,
+                  style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      color: textColor,
+                      fontSize: 15))),
     );
   }
 }
