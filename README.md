@@ -1,10 +1,10 @@
-# gojek_duplicates
+# Gojek Duplicate Apps
 
-A new Flutter project.
+![http://url/to/img.png](https://gojek.design/images/logo/solv/gojek-logo.jpg)
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is only for developing native to hybrid applications using the Flutter framework
 
 A few resources to get you started if this is your first Flutter project:
 
